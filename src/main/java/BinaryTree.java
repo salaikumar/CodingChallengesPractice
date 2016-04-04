@@ -1,60 +1,68 @@
 import Util.Node;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A Simple Implementation of Binary Tree for Practice
  */
 public class BinaryTree<Key,Value> {
-    Node<Key,Value> root;
 
-    public BinaryTree(Key key,Value value){
-        this.root = new Node<Key, Value>(key,value);
+    public Node<Key, Value> root;
+    public BinaryTree(Key key, Value value) {
+        this.root = new Node<Key, Value>(key, value);
     }
-
-    public void insert(Key key,Value value){
-        // Check if root is present
-        if (root == null){
-            root = new Node<Key, Value>(key,value);
-            return;
+    public void insert(Key key, Value value) {
+        Node<Key, Value> newNode = new Node<Key, Value>(key,value);
+        if (root == null) {
+            root = newNode;
         }
-
-        // If node with key already present, update the value
-        if (hasKey(key)){
-            Node existingNode = getNode(key);
-            existingNode.updateValue(value);
+        else{
+            Node currentNode = root;
+            while( true ){
+                if ( currentNode == null){
+                    currentNode =  newNode;
+                    break;
+                }
+                else if ( currentNode.left == null || currentNode.right == null){
+                    if (currentNode.left == null)
+                        currentNode.left = newNode;
+                    else
+                        currentNode.right = newNode;
+                    break;
+                }
+                else{
+                    currentNode = height(currentNode.left) < height(currentNode.right) ? currentNode.left : currentNode.right;
+                }
+            }
         }
-
-        // put the node into the tree
-
     }
 
-    private boolean hasKey(Key key) {
-        return false;
+    public int height(Node root) {
+        if (root== null)
+            return 0;
+        int leftSubtreeHeight  = height(root.left);
+        int rightSubtreeHeight = height(root.right);
+        return leftSubtreeHeight > rightSubtreeHeight ? leftSubtreeHeight + 1: rightSubtreeHeight + 1;
     }
 
-    public void delete(Key key){
-
-    }
-
-    public Value find(Key key){
+    public List<Node> levelOrderTraversal(){
         return null;
     }
 
-    public List<Node> inOrder(){
+    public List<Node> depthOrderTraversal(){
         return null;
     }
 
-    public List<Node> preOrder(){
+    public List<Node<Key,Value>> inOrderTraversal(Node root){
         return null;
     }
 
-    public List<Node> postOrder(){
+    public List<Node> preOrderTraversal(){
         return null;
     }
 
-    public Node<Key,Value> getNode(Key key){
+    public List<Node> postOrderTraversal(){
         return null;
     }
 }
-

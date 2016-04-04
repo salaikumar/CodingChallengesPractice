@@ -1,12 +1,9 @@
 package Util;
 
-/**
- * Created by salaikumar on 3/4/16.
- */
 public class Node<Key,Value>{
 
-    Node<Key, Value> left;
-    Node<Key, Value> right;
+    public Node<Key, Value> left;
+    public Node<Key, Value> right;
 
     Key key;
     Value value;
