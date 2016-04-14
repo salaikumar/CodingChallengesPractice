@@ -50,10 +50,7 @@ public class BinaryTree<Key,Value> {
         return null;
     }
 
-    public List<Node> depthOrderTraversal(){
-        return null;
-    }
-
+    // All the types of Depth Order Traversal are listed below
     public List<Node<Key,Value>> inOrderTraversal(Node root){
         return null;
     }
