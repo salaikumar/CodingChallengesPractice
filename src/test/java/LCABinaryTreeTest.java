@@ -28,6 +28,7 @@ public class LCABinaryTreeTest{
     expected.add(root.right);
     expected.add(root);
     assertThat( lcaBT.getPath(root, root.right.right.left),is(expected));
+    assertThat( lcaBT.iterativeGetPath(root, root.right.right.left),is(expected));
     assertThat( lcaBT.lowestCommonAncestor(root, root, root.right),is(root));
     assertThat( lcaBT.lowestCommonAncestor(root, root.left.right, root.right),is(root));
   }

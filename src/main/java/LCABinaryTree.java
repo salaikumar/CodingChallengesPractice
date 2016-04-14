@@ -59,4 +59,42 @@ public class LCABinaryTree{
       }
       return null;
     }
+
+    // The Recurive approach throws Stack Overflow error.
+    // Let's try making it iterative
+    /*
+    * Thanks to GeeksforGeeks for reminding me the approach
+    */
+    public List<TreeNode> iterativeGetPath(TreeNode root, TreeNode to){
+      Stack<TreeNode> traversal = new Stack<TreeNode>();
+      HashMap<TreeNode, TreeNode> parent = new HashMap<TreeNode, TreeNode>();
+      TreeNode current = null;;
+      traversal.add(root);
+      parent.put(root, null);
+      while(!traversal.empty()){
+        current = traversal.pop();
+        if (current.val == to.val) {
+          break;
+        }
+        // add its children
+        if (current.left != null) {
+          parent.put(current.left, current);
+          traversal.push(current.left);
+        }
+        if (current.right != null) {
+          parent.put(current.right, current);
+          traversal.push(current.right);
+        }
+      }
+
+      // now frame the path using the parent trace
+      List<TreeNode> pathtoNode = new ArrayList<TreeNode>();
+      pathtoNode.add(current);
+      while ( parent.get(current) != null ) {
+        pathtoNode.add(parent.get(current));
+        current = parent.get(current);
+      }
+
+      return pathtoNode;
+    }
 }
