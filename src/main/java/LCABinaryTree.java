@@ -18,8 +18,8 @@ public class LCABinaryTree{
             if (root.val == p.val || root.val == q.val) {
                 return root;
             }
-            List<TreeNode> nodePPath = getPath(root, p);
-            List<TreeNode> nodeQPath = getPath(root, q);
+            List<TreeNode> nodePPath = iterativeGetPath(root, p);
+            List<TreeNode> nodeQPath = iterativeGetPath(root, q);
 
             for ( TreeNode node:nodePPath ) {
               if (nodeQPath.contains(node)) {
@@ -73,7 +73,7 @@ public class LCABinaryTree{
       parent.put(root, null);
       while(!traversal.empty()){
         current = traversal.pop();
-        if (current.val == to.val) {
+        if (current == to) {
           break;
         }
         // add its children

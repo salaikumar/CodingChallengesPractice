@@ -31,5 +31,29 @@ public class LCABinaryTreeTest{
     assertThat( lcaBT.iterativeGetPath(root, root.right.right.left),is(expected));
     assertThat( lcaBT.lowestCommonAncestor(root, root, root.right),is(root));
     assertThat( lcaBT.lowestCommonAncestor(root, root.left.right, root.right),is(root));
+
+
+    // Special Case Testing
+    TreeNode root1 = new TreeNode(7);
+    root1.left = new TreeNode(9);
+    root1.right = new TreeNode(4);
+    root1.left.left = new TreeNode(2); // left side of root
+    root1.left.right = new TreeNode(6);
+    root1.right.left = new TreeNode(2); // right side of root
+    root1.right.right = new TreeNode(3);
+    root1.right.right.left = new TreeNode(1);
+    List<TreeNode>  pathtoP = lcaBT.iterativeGetPath(root1,root1.left.left);
+    List<TreeNode>  pathtoQ = lcaBT.iterativeGetPath(root1,root1.right.left);
+    System.out.println("*** Path to P ***");
+    for (TreeNode node : pathtoP) {
+      System.out.print(node.val + ",");
+    }
+
+    System.out.println("\n*** Path to Q ***");
+    for (TreeNode node1 : pathtoQ) {
+      System.out.print(node1.val + ",");
+    }
+
+    assertThat( lcaBT.lowestCommonAncestor(root1, root1.left.left, root1.right.left).val,is(root1.val));
   }
 }
