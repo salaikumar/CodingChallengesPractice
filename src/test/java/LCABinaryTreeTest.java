@@ -1,0 +1,34 @@
+import org.junit.Test;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.*;
+
+public class LCABinaryTreeTest{
+
+  @Test
+  public void shouldTestLCABT(){
+
+    // Testing the getPath method
+    LCABinaryTree lcaBT = new LCABinaryTree();
+
+    // Let's for a Binary Tree.
+    TreeNode root = new TreeNode(7);
+    root.left = new TreeNode(9);
+    root.right = new TreeNode(4);
+    root.left.left = new TreeNode(2);
+    root.left.right = new TreeNode(6);
+    root.right.left = new TreeNode(8);
+    root.right.right = new TreeNode(3);
+    root.right.right.left = new TreeNode(1);
+
+    List<TreeNode> expected = new ArrayList<TreeNode>();
+    // Adding path to 1
+    expected.add(root.right.right.left);
+    expected.add(root.right.right);
+    expected.add(root.right);
+    expected.add(root);
+    assertThat( lcaBT.getPath(root, root.right.right.left),is(expected));
+    assertThat( lcaBT.lowestCommonAncestor(root, root, root.right),is(root));
+    assertThat( lcaBT.lowestCommonAncestor(root, root.left.right, root.right),is(root));
+  }
+}

@@ -4,15 +4,6 @@
 */
 
 import java.util.*;
-
-// TreeNode Class
-class TreeNode{
-  int val;
-  TreeNode left;
-  TreeNode right;
-  TreeNode(int x) { val = x; }
-}
-
 /*
 * Below solution is accepted in Leetcode
 * Thanks to the Properties of BST to make this solution simple
