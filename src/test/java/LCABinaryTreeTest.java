@@ -11,7 +11,7 @@ public class LCABinaryTreeTest{
     // Testing the getPath method
     LCABinaryTree lcaBT = new LCABinaryTree();
 
-    // Let's for a Binary Tree.
+    // Let's try it for a Binary Tree.
     TreeNode root = new TreeNode(7);
     root.left = new TreeNode(9);
     root.right = new TreeNode(4);
