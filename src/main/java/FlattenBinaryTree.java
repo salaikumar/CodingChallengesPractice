@@ -27,6 +27,7 @@ import java.util.*;
 
 public class FlattenBinaryTree{
   // in place buddy..how u r gonna solve it
+  // there was a hint 
   public void flatten(TreeNode root) {
 
   }
