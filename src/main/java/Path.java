@@ -60,5 +60,6 @@ public class Path{
             System.out.print(ints[i] + " ");
         }
         System.out.println("");
-    }
+  }
+
 }
