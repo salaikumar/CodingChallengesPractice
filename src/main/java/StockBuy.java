@@ -32,7 +32,7 @@ public class StockBuy{
 
   // Solution just by using temporary variables
   public int maxProfitNoDP(int[] prices){
-    
+    return 0;
   }
 
 }
